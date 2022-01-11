@@ -1,0 +1,33 @@
+.multisafepay-payment .button-container {
+    float: right;
+    margin: 2.5rem 0 0 !important;
+}
+
+.multisafepay-payment > .entry-edit-head > a::before {
+    left: auto !important;
+    right: 1.3rem !important;
+}
+
+.multisafepay-heading {
+    width: 80%;
+}
+
+.multisafepay-heading-intro {
+    height: 55px;
+    display: block;
+}
+
+.multisafepay-icon .title:before
+{
+    background: url('../images/icon-multisafepay.png') no-repeat;
+    width: 15px;
+    height: 16px;
+    content: '';
+    display: inline-block;
+    margin-right: 3px;
+    vertical-align: bottom;
+}
+
+.multisafepay-giftcard-payment-additional-info {
+    margin-top: 10%;
+}

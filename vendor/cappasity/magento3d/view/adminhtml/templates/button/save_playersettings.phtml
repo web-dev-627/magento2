@@ -1,0 +1,84 @@
+<?php
+//@codingStandardsIgnoreFile
+$url = $block->getSendDataUrl();
+?>
+
+<?php
+    $_helper = $this->helper('CappasityTech\Magento3D\Helper\Data');
+    $statuses = $_helper->getStatusesByPlanLevel();
+?>
+<div class="statuses" style="display: none">
+    <?php foreach ($statuses as $key => $status) :?>
+        <div class="<?php echo $key;?>"><?php echo $status;?></div>
+    <?php endforeach;?>
+</div>
+
+<button type="button" class="action- scalable save primary js-button-save-settings">
+    <span><?php echo __('Save'); ?></span>
+</button>
+
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/alert',
+        'mage/translate'
+    ], function ($, alert) {
+
+        var ajax_url = '<?php echo $url;?>';
+
+        function disableSettings() {
+            $('.statuses div').each(function (index) {
+                var checkBox = $("[name='" + $(this).attr('class') + "']");
+
+                if ($(this).html() == 'disabled') {
+                    checkBox.attr("disabled", true);
+                }
+            });
+        }
+        setTimeout(disableSettings, 1000);
+
+        $('.js-button-save-settings').on('click', function (event) {
+
+            if($('.js-button-save-settings').parents(':eq(1)').find('.admin__field-error').length > 0){
+                return false;
+            }
+
+            event.preventDefault();
+
+            var datapost = new Object();
+
+            $('.payment-plan input,.payment-plan checkbox,.payment-plan select').each(function (index) {
+                datapost[$(this).attr('name')] = $(this).val();
+            });
+
+            if (this.xhr) {
+                this.xhr.abort();
+            }
+            this.xhr = $.ajax({
+                showLoader: true,
+                method: "post",
+                dataType: "json",
+                url: ajax_url,
+                data: datapost,
+                success: function (response) {
+                    if (!response.error) {
+                        alert({
+                            title: "3D player settings",
+                            content: response.message
+                        })
+                    } else {
+                        alert({
+                            title: "3D player settings",
+                            content: response.message
+                        });
+                        return false;
+                    }
+                },
+                error: $.proxy(function (response) {
+                    console.log('error');
+                })
+            });
+        });
+    });
+
+</script>

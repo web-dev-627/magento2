@@ -1,0 +1,19 @@
+<?php
+$url = $block->getResetDataUrl();
+?>
+
+<button id="send-data" type="button" class="action- scalable save primary js-button-send-reset" style="margin-right: 15px;">
+    <span><?= /* @noEscape */ __('Reset'); ?></span>
+</button>
+
+<script>
+    require([
+        'jquery',
+    ], function ($) {
+        $('.js-button-send-reset').on('click', function () {
+            if (confirm('Are you sure?')){
+                window.location.replace('<?= /* @noEscape */ $url;?>')
+            }
+        })
+    });
+</script>

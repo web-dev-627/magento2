@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="CappasityTech_Magento3D::css/cappasity_styles.css"/>
+    </head>
+    <body>
+        <referenceBlock name="content">
+            <block class="CappasityTech\Magento3D\Block\Catalog\Product\Image3D" name="image3d_gallery"
+                   template="CappasityTech_Magento3D::3dImage.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

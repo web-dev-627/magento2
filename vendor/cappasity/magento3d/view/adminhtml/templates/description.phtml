@@ -1,0 +1,33 @@
+<?php ?>
+<div class="bootstrap">
+    <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <ul id="infos_block" class="list-unstyled">
+            <li><h2>How to create a 3D View</h2>
+                <p>To create a 3D View, you need to create a FREE Cappasity account and <a target="_blank" href=https://cappasity.com/easy-3d-scan/>download</a> the FREE digitizing software Cappasity Easy 3D Scan. The software is easy-to-use, and you don’t have to worry about file names, the number of photos, FTP uploading and other IT things. Use the software to create 3D content and let it take care of everything.</p>
+                <p>Visit our website www.cappasity.com to download the software, watch software tutorials or find a Cappasity certified photo partner who can shoot your products in 3D.</p>
+                <h2>Installation</h2>
+                <p>Installing the module is simple. Just follow the “Modules and Services” link and download the archive to install it in your shop.</p>
+                <ul>
+                    <li>You need to have a Cappasity account to create, upload and synchronize 3D Views. If you don't have an account yet, sign up here: <a target="_blank" href="https://3d.cappasity.com/register">https://3d.cappasity.com/register</a></li>
+                    <li>Sign in to your Cappasity account and generate the security token on your “Account Security” tab. Copy the token and paste it in the API token field below. Next, synchronize your account to attach 3D Views to the items in your product catalog.</li>
+                    <li>You can automatically synchronize your product catalog with your Cappasity account at any time. We synchronize data by comparing your catalog’s SKUs with SKU numbers on the Cappasity platform. Just open the module settings and click the “Synchronize” button below.</li>
+                    <li>To attach a 3D View manually, open “Catalog - Products”, select a product, open the “3D View” tab and choose a 3D from your Cappasity account.</li>
+                    Access the full extension User Guide <a target="_blank" href="https://cdn.cappasity.com/updates/pdf/Cappasity_Magento_User_Guide.pdf">here</a>.
+                </ul>
+                <br>
+                <iframe width="1280" height="720" src="https://www.youtube.com/embed/EVa5-cY2P4k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    require([
+        'jquery',
+    ], function ($) {
+        $('.close').on('click',function () {
+            $('.alert-info').remove();
+        })
+    });
+</script>

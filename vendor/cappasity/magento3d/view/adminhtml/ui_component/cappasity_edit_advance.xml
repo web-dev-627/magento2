@@ -1,0 +1,483 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *  Edit Ui component admin  form Cappasity Data
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">cappasity_edit_advance.cappasity_edit_advance_data_source</item>
+            <item name="deps" xsi:type="string">cappasity_edit_advance.cappasity_edit_advance_data_source</item>
+        </item>
+        <item name="label" translate="true" xsi:type="string">General Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">cappasity_edit_advance</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <dataSource name="cappasity_edit_advance_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">CappasityTech\Magento3D\Model\Data\SyncJobProvider</argument>
+            <argument name="name" xsi:type="string">cappasity_edit_advance_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="CappasitySetting">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">SYNCHRONIZATION</item>
+                <item name="additionalClasses" xsi:type="string">synchronize_fieldset</item>
+            </item>
+        </argument>
+        <container name="synchronize_title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+            <htmlContent name="synchronize_title_content">
+                <argument name="block" xsi:type="object">CappasityTech\Magento3D\Block\Adminhtml\Edit\SynchronizeTitle</argument>
+            </htmlContent>
+        </container>
+        <container name="synchronize_button_reset">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">30</item>
+                </item>
+            </argument>
+            <htmlContent name="synchronize_button_reset_content">
+                <argument name="block" xsi:type="object">CappasityTech\Magento3D\Block\Adminhtml\Button\SendReset</argument>
+            </htmlContent>
+        </container>
+        <container name="synchronize_button_send">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">40</item>
+                </item>
+            </argument>
+            <htmlContent name="synchronize_button_send_content">
+                <argument name="block" xsi:type="object">CappasityTech\Magento3D\Block\Adminhtml\Button\SendSynchronize</argument>
+            </htmlContent>
+        </container>
+        <field name="auto_sync_new_product">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Automatically synchronize new/updated products</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">auto_sync_new_product</item>
+                </item>
+            </argument>
+        </field>
+        <field name="dont_sync_manual">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Don't sync manual choices</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">dont_sync_manual</item>
+                </item>
+            </argument>
+        </field>
+        <field name="use_thumbnail_of_button">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Use thumbnail instead of 3D button</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">use_thumbnail_of_button</item>
+                </item>
+            </argument>
+        </field>
+        <field name="add_preview_to_gallery">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Add preview image to gallery</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">add_preview_to_gallery</item>
+                    <item name="switcherConfig" xsi:type="array">
+                        <item name="enabled" xsi:type="boolean">true</item>
+                        <item name="rules" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="value" xsi:type="number">0</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="target" xsi:type="string">cappasity_edit_advance.cappasity_edit_advance.CappasitySetting.set_preview_base</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="1" xsi:type="array">
+                                        <item name="target" xsi:type="string">cappasity_edit_advance.cappasity_edit_advance.CappasitySetting.set_preview_base</item>
+                                        <item name="callback" xsi:type="string">reset</item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="1" xsi:type="array">
+                                <item name="value" xsi:type="number">1</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="target" xsi:type="string">cappasity_edit_advance.cappasity_edit_advance.CappasitySetting.set_preview_base</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="set_preview_base">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Set Preview Image as Base</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">set_preview_base</item>
+                </item>
+            </argument>
+        </field>
+        <container name="synchronize_button_save">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">100</item>
+                </item>
+            </argument>
+            <htmlContent name="synchronize_button_save_content">
+                <argument name="block" xsi:type="object">CappasityTech\Magento3D\Block\Adminhtml\Button\SaveSynchronize</argument>
+            </htmlContent>
+        </container>
+    </fieldset>
+    <fieldset name="CappasityAddSetting">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">PLAYER SETTINGS</item>
+                <item name="additionalClasses" xsi:type="string">player_settings_fieldset</item>
+            </item>
+        </argument>
+        <container name="player_title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+            <htmlContent name="player_title_content">
+                <argument name="block" xsi:type="object">CappasityTech\Magento3D\Block\Adminhtml\Edit\PlayerTitle</argument>
+            </htmlContent>
+        </container>
+        <field name="autoRun">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Autorun</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">autoRun</item>
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                </item>
+            </argument>
+        </field>
+        <field name="autoRotate">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Autorotate</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">autoRotate</item>
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                </item>
+            </argument>
+        </field>
+        <field name="analytics">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Analytics</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">analytics</item>
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                </item>
+            </argument>
+        </field>
+        <field name="hideSettingsBtn">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Hide Settings button</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">hideSettingsBtn</item>
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                </item>
+            </argument>
+        </field>
+        <field name="logo">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Show logo</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">logo</item>
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                </item>
+            </argument>
+        </field>
+        <field name="autoRotateTime">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Wraparound time, sec</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">autoRotateTime</item>
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-digits-10to120" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="closeButton">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Show CLOSE button</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">closeButton</item>
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                </item>
+            </argument>
+        </field>
+        <field name="hideFullScreen">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Hide Fullscreen button</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">hideFullScreen</item>
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                </item>
+            </argument>
+        </field>
+        <field name="enableImageZoom">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Enable zoom</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">enableImageZoom</item>
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                </item>
+            </argument>
+        </field>
+        <field name="autoRotateDelay">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Rotation freeze, sec</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">autoRotateDelay</item>
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-digits-2to30" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="hideZoomOpt">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Hide Zoom button</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">hideZoomOpt</item>
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                </item>
+            </argument>
+        </field>
+        <field name="uiPadX">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Horizontal (left, right) padding</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">uiPadX</item>
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                        <item name="validate-number" xsi:type="boolean">true</item>
+                        <item name="validate-zero-or-greater" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="zoomQuality" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Zoom quality</label>
+                <dataScope>zoomQuality</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="CappasityTech\Magento3D\Model\Config\Source\ZoomQuality" />
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+
+
+
+
+
+
+
+
+        <field name="autoRotateDir" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Autorotate direction</label>
+                <dataScope>autoRotateDir</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="CappasityTech\Magento3D\Model\Config\Source\AutorotateDirection" />
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+
+        <field name="hideAutoRotateOpt">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Hide Autorotate button</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">hideAutoRotateOpt</item>
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                </item>
+            </argument>
+        </field>
+        <field name="uiPadY">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Vertical (top, bottom) padding</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">uiPadY</item>
+                    <item name="additionalClasses" xsi:type="string">payment-plan</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">false</item>
+                        <item name="validate-number" xsi:type="boolean">true</item>
+                        <item name="validate-zero-or-greater" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <container name="settings_button_save">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">100</item>
+                </item>
+            </argument>
+            <htmlContent name="settings_button_save_content">
+                <argument name="block" xsi:type="object">CappasityTech\Magento3D\Block\Adminhtml\Button\SavePlayerSettings</argument>
+            </htmlContent>
+        </container>
+    </fieldset>
+</form>

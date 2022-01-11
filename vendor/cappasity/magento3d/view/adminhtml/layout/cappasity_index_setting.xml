@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="formkey"/>
+    <head>
+        <css src="CappasityTech_Magento3D::css/cappasity.css"/>
+        <link src="CappasityTech_Magento3D::js/validation.js"/>
+    </head>
+    <body>
+        <referenceBlock name="menu">
+            <action method="setActive">
+                <argument name="itemId" xsi:type="string">CappasityTech_Magento3D::menu</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+
+            <!--SECTION INSTRUCTION -->
+            <container name="cappasity-instruction" htmlTag="section" htmlClass="cappasity-instruction"
+                       before="-">
+                <block class="Magento\Framework\View\Element\Template" name="cappasity.instruction"
+                       template="CappasityTech_Magento3D::description.phtml"/>
+            </container>
+            <!--SECTION INSTRUCTION END -->
+
+            <!--SECTION TOKEN -->
+            <container name="cappasity-token" htmlTag="section" htmlClass="cappasity-token"
+                       after="cappasity.instruction">
+                <uiComponent name="cappasity_edit_setting"/>
+            </container>
+            <!--SECTION TOKEN END-->
+
+            <!--SECTION ADDITIONAL SETTING-->
+            <block class="CappasityTech\Magento3D\Block\Adminhtml\Edit\AdvanceSetting" name="cappasity.access"
+                   template="CappasityTech_Magento3D::set-access.phtml" after="cappasity-token">
+                <container name="cappasity-advance" htmlTag="section" htmlClass="cappasity-advance">
+                    <uiComponent name="cappasity_edit_advance"/>
+                </container>
+            </block>
+            <!--SECTION ADDITIONAL END -->
+
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,180 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ *  Edit Ui component admin  form Cappasity Data
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">cappasity_edit_advance.cappasity_edit_advance_data_source</item>
+            <item name="deps" xsi:type="string">cappasity_edit_advance.cappasity_edit_advance_data_source</item>
+        </item>
+        <item name="label" translate="true" xsi:type="string">General Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">cappasity_edit_advance</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <dataSource name="cappasity_edit_advance_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">
+                CappasityTech\Magento3D\Model\Data\IframeSettingProvider
+            </argument>
+            <argument name="name" xsi:type="string">cappasity_edit_advance_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="CappasitySetting">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">SYNCHRONIZE</item>
+            </item>
+        </argument>
+
+        <container name="synchronize_title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+            <htmlContent name="synchronize_title_content">
+                <argument name="block" xsi:type="object">CappasityTech\Magento3D\Block\Adminhtml\Edit\SynchronizeTitle
+                </argument>
+            </htmlContent>
+        </container>
+
+        <container name="synchronize_button_reset">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">30</item>
+                </item>
+            </argument>
+            <htmlContent name="synchronize_button_reset_content">
+                <argument name="block" xsi:type="object">CappasityTech\Magento3D\Block\Adminhtml\Button\SendReset
+                </argument>
+            </htmlContent>
+        </container>
+
+        <container name="synchronize_button_send">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">40</item>
+                </item>
+            </argument>
+            <htmlContent name="synchronize_button_send_content">
+                <argument name="block" xsi:type="object">
+                    CappasityTech\Magento3D\Block\Adminhtml\Button\SendSynchronize
+                </argument>
+            </htmlContent>
+        </container>
+
+
+        <field name="auto_sync_new_product">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Automatically synchronize new/updated products</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">2</item>
+                        <item name="false" xsi:type="number">1</item>
+                    </item>
+                    <item name="source" xsi:type="string">auto_sync_new_product</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="dont_sync_manual">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Don't sync manual choices</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">2</item>
+                        <item name="false" xsi:type="number">1</item>
+                    </item>
+                    <item name="source" xsi:type="string">dont_sync_manual</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="use_thumbnail_of_button">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Use thumbnail instead of 3D button</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">use_thumbnail_of_button</item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="add_preview_to_gallery">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Add preview image to gallery</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">add_preview_to_gallery</item>
+
+                </item>
+            </argument>
+        </field>
+
+        <field name="set_preview_base">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Set Preview Image as Base</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+                    <item name="source" xsi:type="string">set_preview_base</item>
+                </item>
+            </argument>
+        </field>
+
+
+        <container name="synchronize_button_save">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">100</item>
+                </item>
+            </argument>
+
+            <htmlContent name="synchronize_button_save_content">
+                <argument name="block" xsi:type="object">
+                    CappasityTech\Magento3D\Block\Adminhtml\Button\SaveSynchronize
+                </argument>
+            </htmlContent>
+
+        </container>
+    </fieldset>
+
+</form>
+

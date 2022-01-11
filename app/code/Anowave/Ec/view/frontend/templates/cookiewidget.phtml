@@ -1,0 +1,88 @@
+<div class="ec-gtm-cookie-directive" data-google="anowave gtm">
+	<div>
+		<div>
+			<div>
+				<p><strong><?php echo __('COOKIES') ?></strong></p>
+				<p><?php echo sprintf($block->getHelper()->getCookieDirectiveContent(),$block->getHelper()->getStore()->getName()) ?></p>
+			</div>
+			<?php if ($block->getHelper()->getCookieDirectiveIsSegmentMode()):?>
+    			<div class="ec-gtm-cookie-directive-segments">
+    				<div>
+    					<input type="checkbox" checked="checked" disabled />
+    					<label><?php echo __('Allow essential cookies') ?></label>
+    					<a class="ec-gtm-cookie-directive-note-toggle"><?php echo __('Learn more')?></a>
+    					<div class="ec-gtm-cookie-directive-note">
+    						<small><?php echo __('These cookies are essential so that you can move around the website and use its features. Without these cookies services you have asked for cannot be provided.') ?></small>
+    					</div>
+    				</div>
+    				<?php foreach ($block->getSegments() as $key => $segment):?>
+    					<div>
+    						<input type="checkbox" name="cookie[]" value="<?php echo $key ?>" id="widget_consent_<?php echo $key ?>" <?php if ($segment['check']):?>checked="checked"<?php endif ?> />
+    						<label for="widget_consent_<?php echo $key ?>"><?php echo $segment['label'] ?></label>
+    						<a class="ec-gtm-cookie-directive-note-toggle"><?php echo __('Learn more')?></a>
+    						<div class="ec-gtm-cookie-directive-note">
+    							<small><?php echo $segment['value'] ?></small>
+    						</div>
+    					</div>
+    				<?php endforeach ?>
+    			</div>
+    			<button class="action primary">
+    				<?php echo __('Update Cookie Preferences')?>
+    			</button>
+			<?php else: ?>
+			<?php endif ?>
+		</div>
+	</div>
+</div>
+<script>
+	require(['jquery'],function($)
+	{
+		var segments = [];
+
+		<?php foreach ($block->getSegments() as $key => $segment):?>
+
+		segments.push(<?php echo json_encode($key)?>);
+		
+		<?php endforeach ?>
+
+		segments.forEach(function(segment)
+		{
+			$(':checkbox[value=' + segment + ']').prop('checked', 1 == AEC.Cookie.get(segment) ? true : false)
+		});
+		
+		var directive = $('main').find('.ec-gtm-cookie-directive');
+
+		var endpoints = <?php echo json_encode(
+		[
+			'type' 			=> 'json',
+			'cookie' 		=> $block->getUrl('datalayer/index/cookie'),
+			'cookieContent' => $block->getUrl('datalayer/index/cookieContent'),
+			'cookieConsent' => $block->getUrl('datalayer/index/cookieConsent')
+		]) ?>;
+		
+		directive.find('a.ec-gtm-cookie-directive-note-toggle').off('click.ec').on('click.ec', function()
+		{
+			$(this).next().slideToggle();
+		});
+
+		directive.find('button').off('click.ec').on('click.ec', function()
+		{
+			var button = $(this), text = button.text();
+			
+			var grant = $('main .ec-gtm-cookie-directive [name="cookie[]"]:checked').map(function(){return this.value}).get();
+
+			button.text(<?php echo json_encode(__('Saving. Please wait')) ?>);
+			
+			$.post(endpoints.cookie,{ cookie: grant }, function(response)
+			{
+				$.each(response, function(event, value)
+				{
+					AEC.CookieConsent.acceptConsent(event);	
+				});
+
+				button.text(text);
+				
+			}, endpoints.type);
+		});
+	});
+</script>

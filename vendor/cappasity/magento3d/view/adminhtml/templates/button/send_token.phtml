@@ -1,0 +1,36 @@
+<?php
+$url = $block->getSendDataUrl();
+?>
+
+<button type="button" class="action- scalable save primary js-button-send-token">
+    <span><?= /* @noEscape */__('Submit'); ?></span>
+</button>
+
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/alert',
+        'mage/translate'
+    ], function ($, alert) {
+
+        $('.js-button-send-token').on('click', function () {
+            var token = $('.password ').val();
+            if (token.length == 0) {
+                alert({
+                    content: $.mage.__('The field token can not by empty')
+                })
+                return false;
+            }
+
+            if (token.length < 30) {
+                alert({
+                    content: $.mage.__('The field token has the wrong length(has to by 30 symbol)')
+                });
+                return false;
+            }
+            var url = '<?= /* @noEscape */$url;?>' + "?token=" + token;
+            window.location.replace(url)
+        })
+    });
+</script>
+

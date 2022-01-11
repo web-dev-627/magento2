@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="ewarehousing_orders_update" instance="Notive\Ewarehousing\Cron\Orders" method="update">
+            <schedule>*/15 * * * *</schedule>
+        </job>
+        <job name="ewarehousing_orders_retry" instance="Notive\Ewarehousing\Cron\Orders" method="retry">
+            <schedule>0 * * * *</schedule>
+        </job>
+        <job name="ewarehousing_stock_update" instance="Notive\Ewarehousing\Cron\Stock" method="update">
+            <schedule>0 * * * *</schedule>
+        </job>
+    </group>
+</config>

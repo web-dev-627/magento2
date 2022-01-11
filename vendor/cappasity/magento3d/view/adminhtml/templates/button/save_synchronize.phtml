@@ -1,0 +1,65 @@
+<?php
+$url = $block->getSendDataUrl();
+$notFreeFields = $this->helper(\CappasityTech\Magento3D\Helper\Data::class)->getPaidSettingCodes();
+?>
+
+<button type="button" class="action- scalable save primary js-button-save-synchronize">
+    <span><?= /* @noEscape */ __('Save'); ?></span>
+</button>
+
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/alert',
+        'mage/translate'
+    ], function ($, alert) {
+
+        var ajax_url = '<?= /* @noEscape */ $url;?>';
+        var not_free_fields = <?= /* @noEscape */ json_encode($notFreeFields);?>;
+
+        $('.js-button-save-synchronize').on('click', function (event) {
+            event.preventDefault();
+
+            var datapost = new Object();
+
+            $('.cappasity-advance .admin__control-checkbox').each(function (index) {
+                datapost[$(this).attr('name')] = $(this).val();
+            });
+
+            if (this.xhr) {
+                this.xhr.abort();
+            }
+            this.xhr = $.ajax({
+                showLoader: true,
+                method: "post",
+                dataType: "json",
+                url: ajax_url,
+                data: datapost,
+                success: function (response) {
+                    alert({
+                        title: "Synchronize",
+                        content: response.message,
+                        actions: {
+                            always: function () {
+                                if (response.status == 'error' && response.code == 5) {
+                                    $.each(not_free_fields, function (index, name) {
+                                        $('input[name="'+name+'"]').prop('checked', false);
+                                    })
+                                }
+                            }
+                        }
+                    })
+
+                    return false;
+                },
+                error: $.proxy(function (response) {
+                    console.log('error');
+                })
+
+            });
+
+        });
+
+    });
+
+</script>

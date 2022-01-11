@@ -1,0 +1,339 @@
+<?php
+$fromPicker = $block->getFromPicker();
+$image3dId = $image3d = $block->getProduct()->getData('image3d')["default"]["image3did"];
+$imagePreview = $block->getProduct()->getData('image3d')['default']['image3diframe'];
+//d($image3d = $block->getProduct()->getData('image3d'));
+//$images = array_merge( array_merge($images, array_merge($images, array_merge($images, $images))), array_merge($images, array_merge($images, $images)));
+?>
+<div class="admin__field" data-index="sale">
+    <form name="image3d-del" id="image3d-del">
+        <input type="hidden" value="<?= /* @noEscape */
+        $block->getProduct()->getId(); ?>" name="id">
+        <?php if ($imagePreview):?>
+        <div style="max-width:1040px; height: 400px;" class="">
+           <?= $imagePreview; ?>
+           </div>
+        <?php endif;?>
+                <div id="del-container" style="display: none">
+<!--        <div id="del-container">-->
+            <div class="delete-section">
+                <button title="Remove" type="button"
+                        class="action scalable action-secondary hide-preview delete">
+                    <span>Remove</span>
+                </button>
+            </div>
+        </div>
+    </form>
+    <label class="admin__field-label" for="X1V4LAE">
+        <span data-config-scope="[GLOBAL]">Choose From Picker</span>
+    </label>
+    <div class="admin__field-control">
+        <div class="admin__actions-switch" data-role="switcher">
+            <input type="checkbox" class="admin__actions-switch-checkbox" id="from_picker" data-form-part="product_form"
+                   name="product[from_picker]"
+                   value="<?php if ($fromPicker) {
+                       echo 1;
+                   } else {
+                       echo 0;
+                   } ?>" <?php if ($fromPicker) {
+                echo 'checked';
+            } ?>>
+            <label class="admin__actions-switch-label from_picker" for="from_picker">
+                <span class="admin__actions-switch-text" data-text-on="Yes" data-text-off="No"></span>
+            </label>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="admin__field">
+    <div class="admin__field-control">
+        <input type="text" name="quick-3d-image-search" class="admin__control-text" id="quick-3d-image-search" value=""
+               placeholder="Enter SKU">
+    </div>
+</div>
+<br/>
+<div id="pagination-container">
+    <div class="paginationjs">
+        <div class="paginationjs-pages" id="paginationjs-images"></div>
+    </div>
+</div>
+<div id="data-container" class="images3d-container"></div>
+
+
+<form name="image3d" id="image3d">
+    <input type="hidden" value="<?= /* @noEscape */
+    $block->getProduct()->getId(); ?>" name="id">
+    <div id="preview-container" style="display: none">
+        <div class="save-section">
+            <button title="Cancel" type="button"
+                    class="action scalable action-secondary hide-preview cancel">
+                <span>Cancel</span>
+            </button>
+            <button title="Save" class="action-default primary save">
+                <span>Save</span>
+            </button>
+        </div>
+        <div class="thumbnail-section">
+            <p>
+                <label for="use_thumbnail_3d">Set thumbnail instead of 3D button</label>
+                <select name="use_thumbnail_3d" id="use_thumbnail_3d">
+                    <option value="global">Use global rule</option>
+                    <option value="button3d">Use 3D button</option>
+                    <option value="thumbnail">Use thumbnail instead of 3D button</option>
+                </select>
+
+            </p>
+        </div>
+        <div class="content"></div>
+    </div>
+</form>
+
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/alert',
+        'Magento_Ui/js/modal/confirm',
+        'mage/translate',
+        'capPagination'
+    ], function ($, alertModal, confirmation) {
+
+        /**
+         * From Picker
+         * @type {*|jQuery|HTMLElement}
+         */
+        var fromPicker = $('#from_picker');
+        var image3dId = '<?= /* @noEscape */ $image3dId ?>';
+
+        $('.admin__actions-switch-label.from_picker').on('click', function () {
+            if (fromPicker.prop("checked")) {
+                fromPicker.val(0);
+            } else {
+                fromPicker.val(1);
+            }
+        })
+
+        /**
+         * Preview content
+         * @type {*|jQuery|HTMLElement}
+         */
+
+
+        var buildPagination = function (pages, page) {
+            var imagesPaginationContainer = document.getElementById("paginationjs-images");
+            var ul = document.createElement('ul');
+            var maxPages = 5;
+            page = parseInt(page);
+            var pagination = [];
+            var firstPage = 1;
+            var lastPage = pages;
+            var min = page - 2;
+            var max = page + 2;
+            for (var i = 1; i <= pages; i++) {
+                if (page > pages) break;
+                if (min <= 0 || min == 1
+                    || (max > pages && i >= (pages - (maxPages - 1)))
+                    || (min <= i && max >= i)) {
+                    pagination.push(i);
+                }
+                if (pagination.length >= maxPages) break;
+            }
+
+            var addLi = function (name, value = null) {
+                if (value == null) value = name;
+                var li = document.createElement('li');
+                var href = document.createElement('a');
+                li.className = "paginationjs-page J-paginationjs-page";
+                li.setAttribute('data-num', value);
+                if (name == page) {
+                    li.className += " active";
+                } else if ((name == "First" && value == page)
+                    || (name == '«' && value <= 0)
+                    || (name == '»' && value > pages)
+                    || (name == 'Last' && value == page)) {
+                    li.className += " disabled";
+                }
+                li.appendChild(href);
+                ul.appendChild(li);
+                href.innerHTML += name;
+            }
+
+            addLi('First', 1);
+            addLi('«', page - 1);
+
+            pagination.forEach(function (elem) {
+                addLi(elem);
+            })
+
+            addLi("»", page + 1);
+            addLi("Last", pages);
+
+            var oldPagination = imagesPaginationContainer.querySelector('ul');
+            if (oldPagination) {
+                imagesPaginationContainer.replaceChild(ul, oldPagination);
+            } else {
+                imagesPaginationContainer.appendChild(ul);
+            }
+            changePage();
+        };
+
+        var changePage = function () {
+            $("#paginationjs-images li").not(".disabled").on("click", function (e) {
+                var current = document.querySelector(".paginationjs-pages li.paginationjs-page.active");
+                current.className = current.className.replace('active', '');
+                this.className += ' active';
+                loadImages(this.getAttribute('data-num'));
+            });
+        };
+
+        var imagesPagination = $("#pagination-container");
+        var imagesContent = $("#data-container");
+        var searchInput = $('#quick-3d-image-search');
+
+        var getContentHtml = function (list) {
+            var html = '';
+            $.each(list, function (index, item) {
+                var additionalClass = '';
+                if (image3dId == item.id) {
+                    additionalClass = 'current';
+                }
+
+                var image = '<div class="image item ' + additionalClass + '" data-role="image" data-sku="' + item.sku + '">\n' +
+                    '<div class="product-image-wrapper">\n' +
+                    '<img class="product-image" data-role="image-element" src="' + item.link + '" alt="">\n' +
+                    '<div class="actions"></div>\n' +
+                    '<div class="image-fade"><span>Hidden</span></div>\n' +
+                    '</div>\n' +
+                    '<div class="title-sku"> Sku: ' + item.sku + '</div>\n' +
+                    '</div>';
+                html += image;
+            })
+            return html;
+        };
+
+        var initPreviewEvent = function () {
+            var previewContainer = $('#preview-container');
+            var previewContainerContent = previewContainer.find('.content');
+            var hidePreviewContainer = previewContainer.find('.hide-preview');
+
+            imagesContent.find('.image.item').on('click', function (event) {
+                previewContainerContent.empty();
+                previewContainer.show();
+                var sku = $(this).data('sku');
+
+                $.each(images, function (index, item) {
+                    if (typeof sku == 'string') {
+                        sku = sku.toLowerCase();
+                    }
+                    if (item.sku.toLowerCase() == sku) {
+                        var previewHtml = '<div>' +
+                            '<img style="max-height: 600px;max-width: 600px;" class="product-image" data-role="image-element" src="' + item.link + '" alt="">\n' +
+                            '<input type="hidden" id="uploadId" value="' + item.id + '" name="uploadId">\n' +
+                            '</div>';
+                        previewContainerContent.append(previewHtml);
+                    }
+                })
+            })
+
+            hidePreviewContainer.on('click', function (event) {
+                previewContainer.hide();
+            });
+
+            if (image3dId) {
+                $('#del-container').show();
+            }
+        };
+
+        var loadImages = function (pageNumber = 1) {
+            $.ajax({
+                showLoader: true,
+                method: "get",
+                url: '<?= /* @noEscape */ $block->getPaginationUrl(); ?>',
+                data: {filter: searchInput.val(), page: pageNumber},
+                success: function (response) {
+                    if (response.status == 'success') {
+                        images = response.data.data;
+                        var total = response.data.pages;
+                        buildPagination(total, response.data.page);
+                        imagesContent.html(getContentHtml(images));
+                        initPreviewEvent();
+                    } else {
+                        alertModal({content: response.message});
+                    }
+                },
+                error: $.proxy(function (response) {
+                    console.log('error');
+                })
+            });
+        };
+
+        loadImages();
+
+        var list = [];
+        searchInput.on('keyup', function (event) {
+            loadImages();
+        });
+
+        /**
+         * Form
+         */
+        $('#image3d .save').on('click', function (event) {
+            var params = $('#image3d').serializeArray();
+            $.ajax({
+                showLoader: true,
+                method: "post",
+                url: '<?= /* @noEscape */ $block->getSaveUrl(); ?>',
+                data: params,
+                success: function (response) {
+                    if (response.status == 'success') {
+                        document.location.reload(true);
+                        // fromPicker.val(1).prop("checked", true);
+                        // image3dId = $('#uploadId').val();
+                        // reload3dGalleryImages(images);
+                    } else {
+                        alertModal({content: response.message})
+                    }
+                },
+                error: $.proxy(function (response) {
+                    console.log('error');
+                })
+            });
+            return false;
+        })
+
+        $('#image3d-del .delete').on('click', function (event) {
+            confirmation({
+                title: $.mage.__('Remove 3D View'),
+                content: $.mage.__('Are you sure you want to remove the 3D View?'),
+                actions: {
+                    confirm: function () {
+                        var params = $('#image3d-del').serializeArray();
+                        params.push({"name": "image3dId", "value": image3dId});
+                        console.log('<?= /* @noEscape */ $block->getDeleteUrl(); ?>');
+                        $.ajax({
+                            showLoader: true,
+                            method: "post",
+                            url: '<?= /* @noEscape */ $block->getDeleteUrl(); ?>',
+                            data: params,
+                            success: function (response) {
+                                if (response.status == 'success') {
+                                    document.location.reload(true);
+                                } else {
+                                    alertModal({content: response.message});
+                                }
+                            },
+                            error: $.proxy(function (response) {
+                                console.log('error');
+                            })
+                        });
+                        return false;
+                    },
+                    cancel: function () {
+                    },
+                    always: function () {
+                    }
+                }
+            });
+        })
+    });
+</script>
+

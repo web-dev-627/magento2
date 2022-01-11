@@ -1,0 +1,148 @@
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <section id="multisafepay_general" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="2">
+        <class>separator-top</class>
+        <label><![CDATA[General Settings]]></label>
+        <tab>multisafepay</tab>
+        <resource>MultiSafepay_ConnectAdminhtml::configuration</resource>
+        <group id="multisafepay_general" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="1">
+            <label><![CDATA[General Settings]]></label>
+            <field id="mode" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Live mode]]></label>
+                <config_path>multisafepay/general/mode</config_path>
+                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            </field>
+            <field id="live_api_key" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Live Api Key</label>
+                <config_path>multisafepay/general/live_api_key</config_path>
+                <depends>
+                    <field id="mode">1</field>
+                </depends>
+            </field>
+            <field id="test_api_key" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Test Api Key</label>
+                <config_path>multisafepay/general/test_api_key</config_path>
+                <depends>
+                    <field id="mode">0</field>
+                </depends>
+            </field>
+            <field id="order_status" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[New Order Status]]></label>
+                <config_path>multisafepay/general/order_status</config_path>
+                <source_model>Magento\Sales\Model\Config\Source\Order\Status\NewStatus</source_model>
+                <comment><![CDATA[The default order status will be used if nothing is selected.]]></comment>
+            </field>
+            <field id="pending_payment_order_status" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Pending Payment Order Status]]></label>
+                <config_path>multisafepay/general/pending_payment_order_status</config_path>
+                <source_model>MultiSafepay\ConnectAdminhtml\Model\Config\Source\PendingPaymentStatuses</source_model>
+                <comment><![CDATA[The default order status will be used if nothing is selected.]]></comment>
+            </field>
+            <field id="processing_order_status" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Processing Order Status]]></label>
+                <config_path>multisafepay/general/processing_order_status</config_path>
+                <source_model>Magento\Sales\Model\Config\Source\Order\Status\Processing</source_model>
+                <comment><![CDATA[The default order status will be used if nothing is selected.]]></comment>
+            </field>
+            <field id="order_confirmation_email" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Send the order confirmation email]]></label>
+                <config_path>multisafepay/general/order_confirmation_email</config_path>
+                <source_model>MultiSafepay\ConnectAdminhtml\Model\Config\Source\Email</source_model>
+                <comment><![CDATA[The moment the order confirmation email is sent to the customer.]]></comment>
+            </field>
+            <field id="transaction_custom_description" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Custom Transaction Description]]></label>
+                <config_path>multisafepay/general/transaction_custom_description</config_path>
+                <comment><![CDATA[Use {{order.increment_id}} variable for displaying the Order ID. Default description will be used if left empty.]]></comment>
+            </field>
+            <field id="refund_custom_description" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Custom Refund Description]]></label>
+                <config_path>multisafepay/general/refund_custom_description</config_path>
+                <comment><![CDATA[Use {{order.increment_id}} variable for displaying the Order ID. Default description will be used if left empty.]]></comment>
+            </field>
+            <field id="use_base_currency" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Use base currency?]]></label>
+                <config_path>multisafepay/general/use_base_currency</config_path>
+                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                <comment><![CDATA[Choose whether to send the pricing in base currency or order currency.]]></comment>
+            </field>
+            <field id="preselected_method" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Default selected method]]></label>
+                <config_path>multisafepay/general/preselected_method</config_path>
+                <source_model>MultiSafepay\ConnectAdminhtml\Model\Config\Source\Methods</source_model>
+                <comment><![CDATA[Choose which payment method will be automatically selected in the checkout.]]></comment>
+            </field>
+            <field id="enable_vault" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Enable Vault]]></label>
+                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                <backend_model>MultiSafepay\ConnectAdminhtml\Model\Config\Backend\Vault</backend_model>
+                <comment><![CDATA[Enables Vault for all supported gateways. Please make sure <a href="https://docs.multisafepay.com/tools/recurring-payments/what-is-recurring-payments/" target="blank">Recurring payments</a> is enabled in your MultiSafepay account.]]></comment>
+            </field>
+            <field id="debug" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Enable Debug mode]]></label>
+                <config_path>multisafepay/general/debug</config_path>
+                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                <comment><![CDATA[Write detailed information to]]> var/log/multisafepay-debug.log</comment>
+            </field>
+            <field id="multisafepay_payment_logs" translate="label" type="button" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>MultiSafepay payment logs</label>
+                <frontend_model>MultiSafepay\ConnectAdminhtml\Block\Adminhtml\Config\Download\Button</frontend_model>
+            </field>
+        </group>
+        <group id="multisafepay_advanced" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Advanced Settings</label>
+            <field id="custom_totals" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Exclude custom totals</label>
+                <config_path>multisafepay/advanced/custom_totals</config_path>
+                <comment>
+                    Fill in the custom total code(s) that shouldn't be visible on the MultiSafepay payment page. Semicolon (;) separated values.
+                </comment>
+            </field>
+            <field id="disable_shopping_cart" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Disable Shopping Cart]]></label>
+                <config_path>multisafepay/advanced/disable_shopping_cart</config_path>
+                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                <comment><![CDATA[Select "Yes" to hide all totals on the MultiSafepay payment page, except "Grand total".
+                 <br><br><strong>Note:</strong> won't work for payment methods which require shopping cart data: Afterpay, E-invoicing, in3, Klarna, Pay After Delivery.]]></comment>
+            </field>
+            <field id="use_custom_return_url" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1"
+                showInStore="1">
+                <label>Use custom return urls for PWA storefront integration</label>
+                <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                <config_path>multisafepay/advanced/use_custom_return_url</config_path>
+                <comment><![CDATA[Use custom urls for <strong>"Cancel"</strong> button on payment page and for redirect to a <strong>"Success page"</strong> after successful payment.
+                 <br>
+                 <br>Available url variables:<br>
+                         {{order.increment_id}}, {{order.order_id}} - the entity or increment order id;<br>
+                         {{quote.masked_id}}, {{quote.quote_id}} - the entity or masked quote id; {{quote.masked_id}} param is only available for Magento 2.3 and higher.<br>
+                         {{payment.code}}, {{payment.transaction_id}}  - the payment method code and actual transaction id;<br>
+                         {{store.unsecure_base_url}}, {{store.secure_base_url}} - the store unsecure or secure base url;<br>
+                         {{store.code}}, {{store.store_id}} - the payment store code or entity store id;<br>
+                         {{secure_token}} - the automatically generated secure token.<br>
+                <br>
+                 For the integration with PWA or third-party storefront please use our <a href="https://github.com/MultiSafepay/magento2-graphql" target="blank">separate extension for GraphQL support.</a>]]>
+                </comment>
+                <tooltip><![CDATA[Use this setting for a PWA storefront or third-party storefront integration.]]></tooltip>
+            </field>
+            <field id="custom_cancel_return_url" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
+                showInStore="1">
+                <label>Custom redirect url after cancelling the payment</label>
+                <config_path>multisafepay/advanced/custom_cancel_return_url</config_path>
+                <comment><![CDATA[
+                        <strong>Example:</strong> https://customdomain.com/checkout/cancel?orderId={{order.order_id}} ]]></comment>
+                <depends>
+                    <field id="use_custom_return_url">1</field>
+                </depends>
+            </field>
+            <field id="custom_success_return_url" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1"
+                showInStore="1">
+                <label>Custom "Success page" url</label>
+                <config_path>multisafepay/advanced/custom_success_return_url</config_path>
+                <comment><![CDATA[
+                        <strong>Example:</strong> https://customdomain.com/checkout/success?secureToken={{secure_token}}&incrementId={{order.increment_id}}]]></comment>
+                <depends>
+                    <field id="use_custom_return_url">1</field>
+                </depends>
+            </field>
+        </group>
+    </section>
+</include>

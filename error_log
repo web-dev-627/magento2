@@ -1,0 +1,68 @@
+[15-Jul-2020 17:51:14 UTC] PHP Fatal error:  Uncaught Error: Undefined class constant 'PRE_COMMAND_RUN' in /home/kidscovermag2sky/public_html/vendor/laminas/laminas-dependency-plugin/src/DependencyRewriterPlugin.php:63
+Stack trace:
+#0 phar:///usr/local/bin/composer/src/Composer/EventDispatcher/EventDispatcher.php(388): Laminas\DependencyPlugin\DependencyRewriterPlugin::getSubscribedEvents()
+#1 phar:///usr/local/bin/composer/src/Composer/Plugin/PluginManager.php(239): Composer\EventDispatcher\EventDispatcher->addSubscriber(Object(Laminas\DependencyPlugin\DependencyRewriterPlugin))
+#2 phar:///usr/local/bin/composer/src/Composer/Plugin/PluginManager.php(205): Composer\Plugin\PluginManager->addPlugin(Object(Laminas\DependencyPlugin\DependencyRewriterPlugin))
+#3 phar:///usr/local/bin/composer/src/Composer/Installer/PluginInstaller.php(63): Composer\Plugin\PluginManager->registerPackage(Object(Composer\Package\CompletePackage), true)
+#4 phar:///usr/local/bin/composer/src/Composer/Installer/InstallationManager.php(173): Composer\Installer\PluginInstaller->inst in /home/kidscovermag2sky/public_html/vendor/laminas/laminas-dependency-plugin/src/DependencyRewriterPlugin.php on line 63
+[15-Jul-2020 17:53:45 UTC] PHP Fatal error:  Uncaught Error: Undefined class constant 'PRE_COMMAND_RUN' in /home/kidscovermag2sky/public_html/vendor/laminas/laminas-dependency-plugin/src/DependencyRewriterPlugin.php:63
+Stack trace:
+#0 phar:///usr/local/bin/composer/src/Composer/EventDispatcher/EventDispatcher.php(388): Laminas\DependencyPlugin\DependencyRewriterPlugin::getSubscribedEvents()
+#1 phar:///usr/local/bin/composer/src/Composer/Plugin/PluginManager.php(239): Composer\EventDispatcher\EventDispatcher->addSubscriber(Object(Laminas\DependencyPlugin\DependencyRewriterPlugin))
+#2 phar:///usr/local/bin/composer/src/Composer/Plugin/PluginManager.php(205): Composer\Plugin\PluginManager->addPlugin(Object(Laminas\DependencyPlugin\DependencyRewriterPlugin))
+#3 phar:///usr/local/bin/composer/src/Composer/Installer/PluginInstaller.php(63): Composer\Plugin\PluginManager->registerPackage(Object(Composer\Package\CompletePackage), true)
+#4 phar:///usr/local/bin/composer/src/Composer/Installer/InstallationManager.php(173): Composer\Installer\PluginInstaller->inst in /home/kidscovermag2sky/public_html/vendor/laminas/laminas-dependency-plugin/src/DependencyRewriterPlugin.php on line 63
+[15-Jul-2020 17:55:55 UTC] PHP Fatal error:  Uncaught Error: Undefined class constant 'PRE_COMMAND_RUN' in /home/kidscovermag2sky/public_html/vendor/laminas/laminas-dependency-plugin/src/DependencyRewriterPlugin.php:63
+Stack trace:
+#0 phar:///usr/local/bin/composer/src/Composer/EventDispatcher/EventDispatcher.php(388): Laminas\DependencyPlugin\DependencyRewriterPlugin::getSubscribedEvents()
+#1 phar:///usr/local/bin/composer/src/Composer/Plugin/PluginManager.php(239): Composer\EventDispatcher\EventDispatcher->addSubscriber(Object(Laminas\DependencyPlugin\DependencyRewriterPlugin))
+#2 phar:///usr/local/bin/composer/src/Composer/Plugin/PluginManager.php(205): Composer\Plugin\PluginManager->addPlugin(Object(Laminas\DependencyPlugin\DependencyRewriterPlugin))
+#3 phar:///usr/local/bin/composer/src/Composer/Installer/PluginInstaller.php(63): Composer\Plugin\PluginManager->registerPackage(Object(Composer\Package\CompletePackage), true)
+#4 phar:///usr/local/bin/composer/src/Composer/Installer/InstallationManager.php(173): Composer\Installer\PluginInstaller->inst in /home/kidscovermag2sky/public_html/vendor/laminas/laminas-dependency-plugin/src/DependencyRewriterPlugin.php on line 63
+[15-Jul-2020 17:59:42 UTC] PHP Fatal error:  Uncaught Error: Undefined class constant 'PRE_COMMAND_RUN' in /home/kidscovermag2sky/public_html/vendor/laminas/laminas-dependency-plugin/src/DependencyRewriterPlugin.php:63
+Stack trace:
+#0 phar:///usr/local/bin/composer/src/Composer/EventDispatcher/EventDispatcher.php(388): Laminas\DependencyPlugin\DependencyRewriterPlugin::getSubscribedEvents()
+#1 phar:///usr/local/bin/composer/src/Composer/Plugin/PluginManager.php(239): Composer\EventDispatcher\EventDispatcher->addSubscriber(Object(Laminas\DependencyPlugin\DependencyRewriterPlugin))
+#2 phar:///usr/local/bin/composer/src/Composer/Plugin/PluginManager.php(205): Composer\Plugin\PluginManager->addPlugin(Object(Laminas\DependencyPlugin\DependencyRewriterPlugin))
+#3 phar:///usr/local/bin/composer/src/Composer/Installer/PluginInstaller.php(63): Composer\Plugin\PluginManager->registerPackage(Object(Composer\Package\CompletePackage), true)
+#4 phar:///usr/local/bin/composer/src/Composer/Installer/InstallationManager.php(173): Composer\Installer\PluginInstaller->inst in /home/kidscovermag2sky/public_html/vendor/laminas/laminas-dependency-plugin/src/DependencyRewriterPlugin.php on line 63
+[11-May-2021 12:45:12 UTC] PHP Fatal error:  Allowed memory size of 2097152000 bytes exhausted (tried to allocate 4096 bytes) in phar:///usr/local/bin/composer/src/Composer/DependencyResolver/RuleSetGenerator.php on line 129
+[11-May-2021 12:53:04 UTC] PHP Fatal error:  Allowed memory size of 2097152000 bytes exhausted (tried to allocate 4096 bytes) in phar:///usr/local/bin/composer/src/Composer/DependencyResolver/RuleSetGenerator.php on line 129
+[29-May-2021 04:59:03 UTC] PHP Fatal error:  Allowed memory size of 2097152000 bytes exhausted (tried to allocate 4096 bytes) in phar:///usr/local/bin/composer/src/Composer/DependencyResolver/Rule2Literals.php on line 53
+[29-May-2021 05:01:11 UTC] PHP Fatal error:  Allowed memory size of 2097152000 bytes exhausted (tried to allocate 4096 bytes) in phar:///usr/local/bin/composer/src/Composer/DependencyResolver/Rule2Literals.php on line 53
+[29-May-2021 05:03:41 UTC] PHP Fatal error:  Allowed memory size of 2147483648 bytes exhausted (tried to allocate 67108864 bytes) in phar:///usr/local/bin/composer/src/Composer/DependencyResolver/Pool.php on line 348
+[09-Jun-2021 18:59:46 UTC] PHP Fatal error:  Allowed memory size of 2097152000 bytes exhausted (tried to allocate 4096 bytes) in /home/kidscovermag2sky/public_html/vendor/composer/composer/src/Composer/DependencyResolver/Solver.php on line 223
+[09-Jun-2021 19:10:25 UTC] PHP Fatal error:  Allowed memory size of 2097152000 bytes exhausted (tried to allocate 4096 bytes) in phar:///usr/local/bin/composer/src/Composer/DependencyResolver/RuleSetGenerator.php on line 129
+[22-Jun-2021 09:45:03 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 4096 bytes) in /home/kidscove/public_html/generated/metadata/global.php on line 163122
+[22-Jun-2021 09:45:20 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 4096 bytes) in /home/kidscove/public_html/generated/metadata/global.php on line 163122
+[22-Jun-2021 09:45:23 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 4096 bytes) in /home/kidscove/public_html/generated/metadata/global.php on line 163122
+[22-Jun-2021 09:45:32 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 4096 bytes) in /home/kidscove/public_html/generated/metadata/global.php on line 163122
+[22-Jun-2021 09:46:23 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 4096 bytes) in /home/kidscove/public_html/generated/metadata/global.php on line 163122
+[22-Jun-2021 09:54:11 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 4096 bytes) in /home/kidscove/public_html/generated/metadata/global.php on line 163122
+[22-Jun-2021 09:54:46 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 4096 bytes) in /home/kidscove/public_html/generated/metadata/global.php on line 163122
+[22-Jun-2021 09:54:51 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 4096 bytes) in /home/kidscove/public_html/generated/metadata/global.php on line 163122
+[23-Jun-2021 08:39:12 UTC] PHP Fatal error:  Uncaught Error: Undefined class constant 'PRE_COMMAND_RUN' in /home/kidscove/public_html/vendor/laminas/laminas-dependency-plugin/src/DependencyRewriterPlugin.php:63
+Stack trace:
+#0 phar:///usr/local/bin/composer/src/Composer/EventDispatcher/EventDispatcher.php(388): Laminas\DependencyPlugin\DependencyRewriterPlugin::getSubscribedEvents()
+#1 phar:///usr/local/bin/composer/src/Composer/Plugin/PluginManager.php(239): Composer\EventDispatcher\EventDispatcher->addSubscriber(Object(Laminas\DependencyPlugin\DependencyRewriterPlugin))
+#2 phar:///usr/local/bin/composer/src/Composer/Plugin/PluginManager.php(205): Composer\Plugin\PluginManager->addPlugin(Object(Laminas\DependencyPlugin\DependencyRewriterPlugin))
+#3 phar:///usr/local/bin/composer/src/Composer/Plugin/PluginManager.php(261): Composer\Plugin\PluginManager->registerPackage(Object(Composer\Package\CompletePackage))
+#4 phar:///usr/local/bin/composer/src/Composer/Plugin/PluginManager.php(76): Composer\Plugin\PluginManager->loadRepository(Object(Composer\Reposi in /home/kidscove/public_html/vendor/laminas/laminas-dependency-plugin/src/DependencyRewriterPlugin.php on line 63
+[23-Jun-2021 08:39:30 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 135168 bytes) in /home/kidscove/public_html/generated/metadata/global.php on line 164453
+[23-Jun-2021 08:39:43 UTC] PHP Fatal error:  Allowed memory size of 2097152 bytes exhausted (tried to allocate 65536 bytes) in /home/kidscove/public_html/vendor/composer/ClassLoader.php on line 444
+[23-Jun-2021 08:42:51 UTC] PHP Warning:  copy(): https:// wrapper is disabled in the server configuration by allow_url_fopen=0 in Command line code on line 1
+[23-Jun-2021 08:42:51 UTC] PHP Warning:  copy(https://getcomposer.org/installer): failed to open stream: no suitable wrapper could be found in Command line code on line 1
+[23-Jun-2021 08:42:58 UTC] PHP Warning:  hash_file(composer-setup.php): failed to open stream: No such file or directory in Command line code on line 1
+[23-Jun-2021 08:42:58 UTC] PHP Warning:  unlink(composer-setup.php): No such file or directory in Command line code on line 1
+[23-Jun-2021 08:43:09 UTC] PHP Warning:  hash_file(composer-setup.php): failed to open stream: No such file or directory in Command line code on line 1
+[23-Jun-2021 08:43:09 UTC] PHP Warning:  unlink(composer-setup.php): No such file or directory in Command line code on line 1
+[23-Jun-2021 08:43:14 UTC] PHP Warning:  copy(): https:// wrapper is disabled in the server configuration by allow_url_fopen=0 in Command line code on line 1
+[23-Jun-2021 08:43:14 UTC] PHP Warning:  copy(https://getcomposer.org/installer): failed to open stream: no suitable wrapper could be found in Command line code on line 1
+[23-Jun-2021 08:43:20 UTC] PHP Warning:  hash_file(composer-setup.php): failed to open stream: No such file or directory in Command line code on line 1
+[23-Jun-2021 08:43:20 UTC] PHP Warning:  unlink(composer-setup.php): No such file or directory in Command line code on line 1
+[23-Jun-2021 08:43:22 UTC] PHP Warning:  copy(): https:// wrapper is disabled in the server configuration by allow_url_fopen=0 in Command line code on line 1
+[23-Jun-2021 08:43:22 UTC] PHP Warning:  copy(https://getcomposer.org/installer): failed to open stream: no suitable wrapper could be found in Command line code on line 1
+[23-Jun-2021 08:49:42 UTC] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 20480 bytes) in phar:///home/kidscove/public_html/composer.phar/src/Composer/DependencyResolver/GenericRule.php on line 36
+[23-Jun-2021 08:51:00 UTC] PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted (tried to allocate 20480 bytes) in phar:///home/kidscove/public_html/composer.phar/src/Composer/DependencyResolver/GenericRule.php on line 36
+[23-Jun-2021 08:51:38 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 135168 bytes) in /home/kidscove/public_html/generated/metadata/global.php on line 164453
+[23-Jun-2021 10:10:21 UTC] PHP Fatal error:  Allowed memory size of 33554432 bytes exhausted (tried to allocate 65536 bytes) in /home/kidscove/public_html/vendor/composer/ClassLoader.php on line 444

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system>
+        <tab id="Tatvic" translate="label" sortOrder="10">
+            <label>Tatvic</label>
+        </tab>
+ 
+<section id="tatvic_ee" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Google Analytics Enhanced Ecommerce</label>
+            <tab>Tatvic</tab>
+            <resource>Tatvic_EnhancedEcommerce::ee</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Enhanced Ecommerce</label>
+                <field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Enhanced Ecommerce Extension</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        Enable/Disable Enhanced-Ecommerce Tracking
+                    </comment>
+                </field>
+                <field id="ua_id" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>UA-ID</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <validate>required-entry</validate>
+                    <comment>
+                       Enter UA-ID
+                    </comment>
+                </field>
+                 <field id="enableIP" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable IP Anonymization</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                     <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <comment>
+                      <![CDATA[Use this feature to anonymize (or stop collecting) the I.P Address of your users in Google Analytics. Be in legal compliance by using I.P Anonymization which is important for EU countries As per the GDPR compliance.
+                       Read our <a href="
+https://www.tatvic.com/privacy-policy/?ref=plugin_policy&utm_source=plugin_backend&utm_medium=magento2_free_extension&utm_campaign=GDPR_complaince_ecomm_plugins">privacy policy</a>.]]>
+                       
+                    </comment>
+                </field>
+                 <field id="enableOptOut" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Google Analytics Opt Out</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                     <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                    <comment>
+                       <![CDATA[Use this feature to provide website visitors the ability to prevent their data from being used by Google Analytics As per the GDPR compliance.
+                       Read our <a href="
+https://www.tatvic.com/privacy-policy/?ref=plugin_policy&utm_source=plugin_backend&utm_medium=magento2_free_extension&utm_campaign=GDPR_complaince_ecomm_plugins">privacy policy</a>.]]>
+                    </comment>
+                </field>
+            </group>
+             <group id="support" translate="label" type="text"  sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                 <frontend_model>Tatvic\EnhancedEcommerce\Block\Adminhtml\System\Support</frontend_model>
+            </group>
+        </section>
+    <section id="tatvic_offers" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Premium Version</label>
+        <tab>Tatvic</tab>
+        <resource>Tatvic_EnhancedEcommerce::ee</resource>
+        <group id="premiumversion" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+             <label>Premium Version</label>
+             <field id="tatvic_offers" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+             <frontend_model>Tatvic\EnhancedEcommerce\Block\Adminhtml\System\PremiumVersion</frontend_model>
+             </field>
+        </group>
+        <group id="support" translate="label" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+             <label>Tatvic Also Offers</label>
+             <field id="tatvic_offers" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+             <frontend_model>Tatvic\EnhancedEcommerce\Block\Adminhtml\System\TatvicOffers</frontend_model>
+             </field>
+        </group>
+
+      
+    </section>
+    </system>
+</config>

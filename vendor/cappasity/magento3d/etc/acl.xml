@@ -1,0 +1,26 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="CappasityTech_Magento3D::menu" title="Cappasity Extensions" sortOrder="50">
+
+                    <resource id="CappasityTech_Magento3D::cappasitysetting" title="Setting" sortOrder="40">
+                        <resource id="CappasityTech_Magento3D::cappasitygeneralsetting"
+                                  title="Cappasity general setting"
+                                  sortOrder="10"/>
+                        <resource id="CappasityTech_Magento3D::edit_cappasity_tech"
+                                  title="Cappasity general setting"
+                                  sortOrder="10"/>
+                    </resource>
+
+                    <resource id="CappasityTech_Magento3D::documentation" title="Documentations" sortOrder="50">
+                        <resource id="CappasityTech_Magento3D::userguide" title="User Guides" sortOrder="10"/>
+                        <resource id="CappasityTech_Magento3D::marketplace" title="Marketplaces" sortOrder="20"/>
+                    </resource>
+
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

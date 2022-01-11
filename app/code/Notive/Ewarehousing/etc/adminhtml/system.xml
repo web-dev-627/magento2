@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="ewarehousing_tab" translate="label" sortOrder="1000">
+            <label>eWarehousing</label>
+        </tab>
+        <section id="ewarehousing_section" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>eWarehousing configuration</label>
+            <tab>ewarehousing_tab</tab>
+            <resource>Notive_Ewarehousing::config</resource>
+            <group id="authentication" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Authentication</label>
+                <field id="customer_id" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Customer Number</label>
+                    <comment><![CDATA[Your eWarehousing customer number.]]></comment>
+                    <validate>validate-no-empty</validate>
+                </field>
+                <field id="username" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Token</label>
+                    <comment><![CDATA[Your eWarehousing token.]]></comment>
+                    <validate>validate-no-empty</validate>
+                </field>
+                <field id="password" translate="label" type="password" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Secret</label>
+                    <comment><![CDATA[Your eWarehousing secret.]]></comment>
+                    <validate>validate-no-empty</validate>
+                </field>
+            </group>
+            <group id="orders_send" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Send Orders</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Send orders to eWarehousing.]]></comment>
+                </field>
+                <field id="status_send" translate="label" type="multiselect" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Status(es)</label>
+                    <source_model>Notive\Ewarehousing\Model\Config\OrderStatuses</source_model>
+                    <comment><![CDATA[When an order gets this status, it will be sent to eWarehousing.]]></comment>
+                </field>
+            </group>
+            <group id="orders_sync" translate="label" type="text" sortOrder="3" showInDefault="1" showInStore="1" showInWebsite="1">
+                <label>Update Order Statuses</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Update order statuses with eWarehousing.]]></comment>
+                </field>
+            </group>
+            <group id="stock_sync" translate="label" type="text" sortOrder="4" showInDefault="1" showInStore="0" showInWebsite="0">
+                <label>Update Stock Levels</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Update stock levels with eWarehousing.]]></comment>
+                </field>
+                <field id="stock_type" translate="label" type="multiselect" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Stock Type</label>
+                    <source_model>Notive\Ewarehousing\Model\Config\StockTypes</source_model>
+                    <comment><![CDATA[Select the stock type you wish to use.]]></comment>
+                </field>
+                <field id="last_sync" translate="label" type="text" sortOrder="3" showInDefault="0" showInWebsite="0" showInStore="0">
+                    <label>Last Sync Date</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

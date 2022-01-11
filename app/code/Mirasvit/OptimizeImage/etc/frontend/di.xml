@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- webp browsers support for product pages -->
+    <type name="Magento\Framework\App\Http\Context">
+        <plugin name="mst-optimiz-image-fotorama-webp" type="Mirasvit\OptimizeImage\Plugin\FotoramaWebpSupportPlugin" sortOrder="1000"/>
+    </type>
+</config>

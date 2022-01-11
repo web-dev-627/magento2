@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <plugin name="add_multisafepay_config_providers_on_checkout" type="MultiSafepay\ConnectFrontend\Plugin\Checkout\Model\CompositeConfigProvider"/>
+    </type>
+
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="add_multisafepay_generic_on_checkout" type="MultiSafepay\ConnectFrontend\Plugin\Checkout\Block\Checkout\LayoutProcessorPlugin"/>
+    </type>
+
+    <type name="Magento\Vault\Model\Ui\TokensConfigProvider">
+        <arguments>
+            <argument name="tokenUiComponentProviders" xsi:type="array">
+                <item name="multisafepay_creditcard_recurring" xsi:type="object">MultiSafepay\ConnectCore\Model\Ui\CreditCardTokenUiComponentProvider</item>
+                <item name="multisafepay_visa_recurring" xsi:type="object">MultiSafepay\ConnectCore\Model\Ui\VisaTokenUiComponentProvider</item>
+                <item name="multisafepay_mastercard_recurring" xsi:type="object">MultiSafepay\ConnectCore\Model\Ui\MastercardTokenUiComponentProvider</item>
+                <item name="multisafepay_amex_recurring" xsi:type="object">MultiSafepay\ConnectCore\Model\Ui\AmexTokenUiComponentProvider</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="MultiSafepay\ConnectFrontend\Observer\RestoreQuoteObserver">
+        <arguments>
+            <argument name="checkoutSession" xsi:type="object">Magento\Checkout\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+</config>

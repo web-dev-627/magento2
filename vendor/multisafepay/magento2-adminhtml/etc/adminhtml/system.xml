@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="multisafepay" translate="label" sortOrder="400" class="multisafepay-icon">
+            <label>MultiSafepay</label>
+        </tab>
+        <include path="MultiSafepay_ConnectAdminhtml::system/support.xml"/>
+        <include path="MultiSafepay_ConnectAdminhtml::system/general.xml"/>
+        <include path="MultiSafepay_ConnectAdminhtml::system/gateways.xml"/>
+        <include path="MultiSafepay_ConnectAdminhtml::system/giftcards.xml"/>
+    </system>
+</config>

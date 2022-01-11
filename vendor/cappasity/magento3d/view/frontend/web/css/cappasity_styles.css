@@ -1,0 +1,38 @@
+.fotorama__nav--dots .fotorama__nav__frame--thumb.hidden,
+.fotorama__nav__frame.fotorama__nav__frame--thumb.hidden {
+    display:none !important;
+}
+@media all and (max-width:767px) {
+    .fotorama__nav--dots .fotorama__nav__frame--thumb {
+        display:inline-block !important;
+    }
+    .fotorama__nav--dots .fotorama__nav__frame--thumb.hidden {
+        display:none !important;
+    }
+    .fotorama__nav__frame.fotorama__nav__frame--dot {
+        display: none;
+    }
+    .fotorama__nav--dots .fotorama__nav__frame {
+        height:80px !important;
+    }
+    .fotorama__thumb {
+        background-image: url(../images/thunbnal-3D.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+
+.fotorama__arr {
+    height: calc(100% - 60px);
+    bottom: auto;
+}
+.fotorama__nav-wrap .fotorama_vertical_ratio .fotorama__img{
+    width: auto;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+.fotorama__thumb {
+    background: transparent;
+    border: 1px solid #ebebeb;
+}

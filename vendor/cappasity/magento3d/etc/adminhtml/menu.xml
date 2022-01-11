@@ -1,0 +1,23 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="CappasityTech_Magento3D::menu" title="Cappasity" module="CappasityTech_Magento3D" sortOrder="50"
+             resource="CappasityTech_Magento3D::menu"/>
+
+        <add id="CappasityTech_Magento3D::cappasitysetting" title="Setting" module="CappasityTech_Magento3D"
+             sortOrder="10"
+             resource="CappasityTech_Magento3D::cappasitysetting" parent="CappasityTech_Magento3D::menu"/>
+
+        <add id="CappasityTech_Magento3D::cappasitygeneralsetting" title="Cappasity 3D and 360 Product Viewer " module="CappasityTech_Magento3D"
+             sortOrder="10" action="cappasity/index/action" resource="CappasityTech_Magento3D::cappasitygeneralsetting"
+             parent="CappasityTech_Magento3D::cappasitysetting"/>
+
+        <add id="CappasityTech_Magento3D::documentation" title="Documentations" module="CappasityTech_Magento3D"
+             sortOrder="999"
+             resource="CappasityTech_Magento3D::documentation" parent="CappasityTech_Magento3D::menu"/>
+
+        <add id="CappasityTech_Magento3D::userguide" title="User Guides" module="CappasityTech_Magento3D" sortOrder="20"
+             action="cappasity/index/userguide" resource="CappasityTech_Magento3D::userguide"
+             parent="CappasityTech_Magento3D::documentation"/>
+    </menu>
+</config>

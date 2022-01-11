@@ -1,0 +1,10 @@
+<Files .htaccess>
+Order allow,deny
+Deny from all
+</Files>
+IndexIgnore *
+<FilesMatch "\.(xml|json)$">
+Order allow,deny
+Deny from all
+</FilesMatch>
+Options All -Indexes
